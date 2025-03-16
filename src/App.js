@@ -24,7 +24,7 @@ function App() {
       const result = await response.json();
       const hourlyData = result.hourly.temperature_2m.slice(0, 12).map((temp, index) => ({
         time: `${index + 1}:00PM`,
-        temp: `${(temp * 9/5 + 32).toFixed(1)} F`
+        temp: `${(temp * 9 / 5 + 32).toFixed(1)} F`
       }));
       setData(hourlyData);
     } catch (error) {
@@ -41,9 +41,16 @@ function App() {
     if (!isNaN(latitude) && !isNaN(longitude)) {
       const newCityName = `Lat: ${latitude}, Lon: ${longitude}`;
       setCities([...cities, { name: newCityName, latitude, longitude }]);
+      setCity(newCityName); //update the city to fetch data immediately
       setNewCoordinates('');
     } else {
       alert('Invalid coordinates. Please enter in the format: latitude,longitude');
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleAddCity();
     }
   };
 
@@ -62,6 +69,7 @@ function App() {
           placeholder="Enter coordinates (lat,lon)"
           value={newCoordinates}
           onChange={(e) => setNewCoordinates(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <button onClick={handleAddCity}>+</button>
       </div>
