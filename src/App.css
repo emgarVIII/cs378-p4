@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.button-group button,
+.input-group button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: gray;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.input-group {
+  margin: 20px 0;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 5px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px 20px;
+  border: 1px solid white;
+}
